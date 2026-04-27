@@ -1,0 +1,69 @@
+[
+  {
+    "eircode": "D001234",
+    "applianceType": "QE",
+    "brand": "QE",
+    "model": "123-123-1234",
+    "serial": "1234-1234-1234",
+    "buyDate": "2026-03-05",
+    "warrantyDate": "2026-03-31"
+  },
+  {
+    "eircode": "D001234",
+    "type": "WWW",
+    "brand": "WWW",
+    "model": "123-123-1234",
+    "serial": "123-123-1234",
+    "buyDate": "2026-03-23",
+    "warnDate": "2027-03-23"
+  },
+  {
+    "eircode": "D001234",
+    "type": "WWW",
+    "brand": "WWW",
+    "model": "123-123-1234",
+    "serial": "1234-1234-1234",
+    "buyDate": "2026-03-23",
+    "warnDate": "2027-03-23"
+  },
+  {
+    "eircode": "D001234",
+    "type": "WWW",
+    "brand": "WWW",
+    "model": "123-123-1234",
+    "serial": "1234-1234",
+    "buyDate": "2026-03-23",
+    "warnDate": "2027-03-23"
+  },
+  {
+    "eircode": "D001234",
+    "type": "WWW",
+    "brand": "WWW",
+    "model": "123-123-1234",
+    "serial": "1234-1234-1234",
+    "buyDate": "2026-03-23",
+    "warnDate": "2027-03-23"
+  },
+  {
+    "firstName": "GE",
+    "email": "123456789@gmali.com",
+    "eircode": "D001234",
+    "type": "123",
+    "brand": "12",
+    "model": "123-123-1234",
+    "serial": "1234-1234-1234",
+    "buyDate": "2026-04-01",
+    "warnDate": "2026-04-27"
+  },
+  {
+    "firstName": "GE",
+    "email": "123456789@gmali.com",
+    "eircode": "D001234",
+    "type": "123",
+    "brand": "12",
+    "model": "123-123-1234",
+    "serial": "1234-1234-1234",
+    "buyDate": "2026-04-01",
+    "warnDate": "2026-04-27"
+  }
+]
