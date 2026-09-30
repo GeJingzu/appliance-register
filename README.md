@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Appliance Register
 
-## Getting Started
+A small web app for registering home appliances and keeping track of their warranties. I built it for the Server-Side Web Development module at Griffith College Dublin (spring 2026).
 
-First, run the development server:
+A user fills in their name, email and Eircode plus the appliance details (type, brand, model, serial number, purchase date, warranty end date). After that you can look an appliance up by serial number, change its warranty date, or delete it.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Built with
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Next.js 16 (App Router) and React 19
+- MySQL, through `mysql2` with prepared statements
+- `xss` to clean user input before it goes anywhere near the database
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## How it works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Each page is a client-side form that sends JSON to an API route:
 
-## Learn More
+| Page | API route | What it does |
+|---|---|---|
+| `/part-b-c` | `POST /api/register` | checks the email format, rejects a serial number that is already registered, then inserts the user and the appliance |
+| `/search` | `POST /api/search` | joins `Appliance` and `User` to show an appliance with its owner |
+| `/update` | `POST /api/update` | changes the warranty end date, but only if the serial number exists |
+| `/delete` | `POST /api/delete` | deletes by serial number and returns 404 if nothing was deleted |
 
-To learn more about Next.js, take a look at the following resources:
+All queries use `?` placeholders, so input is never pasted straight into SQL. The routes return proper status codes (200, 400, 404, 500) and the pages show the error message from the server.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`/part-a` is a separate warm-up exercise from the same assignment (a cinema booking form with client-side validation only).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Running it locally
 
-## Deploy on Vercel
+1. Create the database with `schema.sql`:
+   ```
+   mysql -u root -p < schema.sql
+   ```
+2. Copy `.env.example` to `.env.local` and fill in your MySQL details.
+3. Install and start:
+   ```
+   npm install
+   npm run dev
+   ```
+4. Open http://localhost:3000
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## What I'd do next
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Let one user own several appliances instead of creating a new user row every time
+- Show a list of warranties that run out in the next 30 days
+- Use a connection pool instead of opening a new connection on every request
